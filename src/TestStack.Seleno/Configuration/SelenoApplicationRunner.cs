@@ -9,7 +9,7 @@ namespace TestStack.Seleno.Configuration
     public static class SelenoApplicationRunner
     {
         private static readonly ILog Log = LogManager.GetLogger("Seleno");
-        public static ISelenoApplication Host { get; private set; }
+        public static ISelenoApplication Host { get; internal set; }
        
         public static void Run(string webProjectFolder, 
                                int portNumber, 
