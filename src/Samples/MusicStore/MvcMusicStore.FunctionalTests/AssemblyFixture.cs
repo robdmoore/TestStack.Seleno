@@ -13,7 +13,7 @@ namespace MvcMusicStore.FunctionalTests
             SelenoApplicationRunner.Run(
                 "MvcMusicStore", 
                 12345,
-                c => c.UsingCamera(new FileCamera("d:\\temp\\AUIT")));
+                c => c.UsingCamera("d:\\temp\\AUIT"));
         }
     }
 }

@@ -8,7 +8,7 @@ namespace TestStack.Seleno.Configuration
 {
     public class SelenoApplication : ISelenoApplication
     {
-        public Container Container { get; set; }
+        public Container Container { get; private set; }
         public IWebDriver Browser { get { return Container.Resolve<IWebDriver>(); } }
         public ICamera Camera { get { return Container.Resolve<ICamera>(); } }
         public IWebServer WebServer { get { return Container.Resolve<IWebServer>(); } }
@@ -31,11 +31,9 @@ namespace TestStack.Seleno.Configuration
             WebServer.Stop();
         }
 
-
         void CurrentDomain_DomainUnload(object sender, EventArgs e)
         {
             ShutDown();
         }
-
     }
 }

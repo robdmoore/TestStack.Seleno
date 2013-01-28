@@ -1,8 +1,11 @@
 using System;
-
+using System.Linq.Expressions;
+using System.Web.Mvc;
 using TestStack.Seleno.Configuration.Contracts;
 using TestStack.Seleno.Configuration.WebServers;
 using TestStack.Seleno.Infrastructure.Logging;
+using TestStack.Seleno.PageObjects;
+using TestStack.Seleno.PageObjects.Actions;
 
 namespace TestStack.Seleno.Configuration
 {
@@ -70,6 +73,14 @@ namespace TestStack.Seleno.Configuration
             Host.Initialize();
 
             return Host;
+        }
+
+        public static TPage NavigateToInitialPage<TController, TPage>(Expression<Action<TController>> action)
+            where TController : Controller
+            where TPage : UiComponent, new()
+        {
+            IPageNavigator navigator = Host.Container.Resolve<IPageNavigator>();
+            return navigator.To<TController, TPage>(action);
         }
     }
 }
