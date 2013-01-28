@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using Funq;
 using TestStack.Seleno.Configuration.Contracts;
 using TestStack.Seleno.Configuration.Screenshots;
@@ -20,6 +21,7 @@ namespace TestStack.Seleno.Configuration
         protected Func<Container, ICamera> _camera = c => new NullCamera();
         protected Func<IWebDriver> _webDriver = BrowserFactory.FireFox;
         protected ILogFactory _logFactory = new ConsoleLogFactory();
+        protected Assembly[] _pageObjectAssemblies;
 
         public ISelenoApplication CreateApplication()
         {
@@ -88,6 +90,28 @@ namespace TestStack.Seleno.Configuration
         {
             _logFactory = logFactory;
             return this;
+        }
+
+        public AppConfigurator WithPageObjectsFrom(Assembly[] assemblies)
+        {
+            _pageObjectAssemblies = assemblies;
+            return this;
+        }
+    }
+
+    public class PageObjectScanner : IFunqlet
+    {
+        readonly Assembly[] _assemblies;
+
+        public PageObjectScanner(Assembly[] assemblies)
+        {
+            _assemblies = assemblies;
+        }
+
+        public void Configure(Container container)
+        {
+            // scan assemblies for classes implementing UiComponent
+            // register them with container
         }
     }
 }
