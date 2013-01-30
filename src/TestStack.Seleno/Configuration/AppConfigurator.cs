@@ -56,7 +56,6 @@ namespace TestStack.Seleno.Configuration
                     c.LazyResolve<IElementFinder>(), c.LazyResolve<ICamera>(), c.LazyResolve<IPageNavigator>(),c));
 
             var pageObjectTypes = new PageObjectScanner(_pageObjectAssemblies).Scan();
-            //pageObjectTypes.Each(type => container.RegisterPageObject(type));
             container.RegisterPageObjects(pageObjectTypes);
 
             return container;
