@@ -53,10 +53,11 @@ namespace TestStack.Seleno.Configuration
                                        c.Resolve<IWebServer>(), c.Resolve<IComponentFactory>()));
             container.Register<IComponentFactory>(
                 c => new ComponentFactory(c.LazyResolve<IWebDriver>(), c.LazyResolve<IScriptExecutor>(),
-                    c.LazyResolve<IElementFinder>(), c.LazyResolve<ICamera>(), c.LazyResolve<IPageNavigator>()));
+                    c.LazyResolve<IElementFinder>(), c.LazyResolve<ICamera>(), c.LazyResolve<IPageNavigator>(),c));
 
             var pageObjectTypes = new PageObjectScanner(_pageObjectAssemblies).Scan();
-            pageObjectTypes.Each(type => container.RegisterAutoWiredType(type));
+            //pageObjectTypes.Each(type => container.RegisterPageObject(type));
+            container.RegisterPageObjects(pageObjectTypes);
 
             return container;
         }
@@ -103,4 +104,10 @@ namespace TestStack.Seleno.Configuration
             return this;
         }
     }
+
+
+    public class MyViewModel { }
+
+    public class MyPage : Page<PageObjects.MyViewModel> { }
+
 }
