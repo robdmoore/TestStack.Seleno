@@ -158,13 +158,23 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\jquery-delayed.aspx.cs">
+      <DependentUpon>jquery-delayed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="ViewModels\Form1ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <EmbeddedResource Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\jquery-delayed.aspx" />
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
+    <Content Include="Scripts\jquery-2.0.3.min.map" />
+    <Content Include="Views\Home\jQuery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TestStack.Seleno\TestStack.Seleno.csproj">

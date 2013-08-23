@@ -47,6 +47,20 @@ namespace TestStack.Seleno.AcceptanceTests.PageObjects
         {
             return Navigate().To<HomeController, ListPage>(c => c.List());
         }
+
+        public JQueryPage GoToJQueryPage()
+        {
+            return Navigate().To<JQueryPage>(By.LinkText("Delayed jQuery"));
+        }
+    }
+
+    public class JQueryPage : Page
+    {
+        public string GetListItemValue()
+        {
+            var item = Find().Element(Seleno.PageObjects.Locators.By.jQuery("#anid"));
+            return item.Text;
+        }
     }
 
     public class ListPage : Page

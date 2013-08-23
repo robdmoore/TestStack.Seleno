@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="jquery-delayed.aspx.cs" Inherits="TestStack.Seleno.AcceptanceTests.Web.Scripts.jquery_delayed" %>

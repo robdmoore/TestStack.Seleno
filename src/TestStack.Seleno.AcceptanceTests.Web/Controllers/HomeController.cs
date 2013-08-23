@@ -13,5 +13,10 @@ namespace TestStack.Seleno.AcceptanceTests.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult jQuery()
+        {
+            return View();
+        }
     }
 }
